@@ -1,5 +1,5 @@
 /**
- * Dawn Bloom — the bento surface kit.
+ * Dawn Bloom — the bento surface kit (Firdaus Premium).
  *
  * Presentation only. Every component here is a *tone carrier*: it takes a
  * life-area voice ("prayer", "task", "kids"…) and renders it with the matching
@@ -30,6 +30,7 @@ export function Tile({
   index = 0,
   children,
   plain = false,
+  quiet = false,
 }: {
   tone?: Tone;
   to?: LinkTo;
@@ -39,8 +40,15 @@ export function Tile({
   children: ReactNode;
   /** plain = card surface instead of a tinted field */
   plain?: boolean;
+  /** quiet = calm tonal surface for secondary information */
+  quiet?: boolean;
 }) {
-  const cls = `tile bloom-in ${plain ? "border border-border/70 shadow-[var(--shadow-lift)]" : "tile-tone"} ${className}`;
+  const surface = plain
+    ? "border border-border/70 shadow-[var(--shadow-lift)]"
+    : quiet
+      ? "tile-quiet"
+      : "tile-vivid";
+  const cls = `tile bloom-in ${surface} ${className}`;
   const style = { "--i": index } as CSSProperties;
 
   if (to) {
@@ -52,7 +60,13 @@ export function Tile({
   }
   if (onClick) {
     return (
-      <button type="button" onClick={onClick} data-tone={tone} className={`${cls} w-full text-left`} style={style}>
+      <button
+        type="button"
+        onClick={onClick}
+        data-tone={tone}
+        className={`${cls} w-full text-left`}
+        style={style}
+      >
         {children}
       </button>
     );
@@ -64,24 +78,28 @@ export function Tile({
   );
 }
 
-/** The signature glyph holder — soft field, or solid for emphasis. */
+/** The signature glyph holder — soft field, or a glowing gradient orb. */
 export function IconChip({
   icon: Icon,
   solid = false,
   className = "",
+  float = false,
 }: {
   icon: ComponentType<{ className?: string; strokeWidth?: number }>;
   solid?: boolean;
   className?: string;
+  float?: boolean;
 }) {
   return (
-    <span className={`${solid ? "icon-chip-solid" : "icon-chip"} ${className}`}>
-      <Icon className="size-[1.15rem]" strokeWidth={2} />
+    <span
+      className={`${solid ? "icon-orb" : "icon-orb-soft"} ${float ? "float-soft" : ""} ${className}`}
+    >
+      <Icon className="size-[1.15rem]" strokeWidth={2.1} />
     </span>
   );
 }
 
-/** A compact tonal stat: icon, a warm number, a human line. */
+/** A compact tonal stat: icon, an expressive number, a human line. */
 export function StatTile({
   tone,
   icon,
@@ -90,6 +108,7 @@ export function StatTile({
   note,
   to,
   index = 0,
+  emoji,
 }: {
   tone: Tone;
   icon: ComponentType<{ className?: string; strokeWidth?: number }>;
@@ -98,17 +117,24 @@ export function StatTile({
   note?: string;
   to?: LinkTo;
   index?: number;
+  emoji?: string;
 }) {
   return (
-    <Tile tone={tone} {...(to ? { to } : {})} index={index} className="flex min-h-[9.5rem] flex-col justify-between">
+    <Tile
+      tone={tone}
+      {...(to ? { to } : {})}
+      index={index}
+      className="flex min-h-[9.75rem] flex-col justify-between"
+    >
       <div className="flex items-start justify-between gap-2">
         <IconChip icon={icon} solid />
-        <span className="figure-lg" style={{ color: "var(--tone)" }}>
-          {figure}
-        </span>
+        <span className="figure-xl">{figure}</span>
       </div>
       <div className="mt-4">
-        <p className="title-md text-[0.98rem]">{title}</p>
+        <p className="title-md text-[0.98rem]">
+          {title}
+          {emoji ? <span className="ml-1.5 text-[0.9rem]">{emoji}</span> : null}
+        </p>
         {note && <p className="text-ink-soft mt-0.5 text-[0.78rem] font-medium">{note}</p>}
       </div>
     </Tile>
@@ -160,55 +186,81 @@ export function ProgressRing({
   size = 64,
   label,
   tone,
+  thickness = 6,
+  children,
 }: {
   pct: number;
   size?: number;
   label?: string;
   tone?: Tone;
+  thickness?: number;
+  children?: ReactNode;
 }) {
   const clamped = Math.max(0, Math.min(100, pct));
-  const r = (size - 8) / 2;
+  const r = (size - thickness - 2) / 2;
   const c = 2 * Math.PI * r;
   return (
     <span
-      className="relative inline-grid place-items-center"
+      className="relative inline-grid flex-none place-items-center"
       data-tone={tone}
       style={{ width: size, height: size }}
       role="img"
       aria-label={label ? `${label}: ${Math.round(clamped)}%` : `${Math.round(clamped)}%`}
     >
-      <svg width={size} height={size} className="-rotate-90">
-        <circle className="ring-track" cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={6} />
+      <svg width={size} height={size} className="-rotate-90 overflow-visible">
+        <circle
+          className="ring-track"
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          fill="none"
+          strokeWidth={thickness}
+        />
         <circle
           className="ring-fill"
           cx={size / 2}
           cy={size / 2}
           r={r}
           fill="none"
-          strokeWidth={6}
+          strokeWidth={thickness}
           strokeLinecap="round"
           strokeDasharray={c}
           strokeDashoffset={c - (c * clamped) / 100}
+          style={{
+            filter:
+              clamped > 0
+                ? "drop-shadow(0 2px 6px color-mix(in oklab, var(--tone, var(--space-accent)) 60%, transparent))"
+                : undefined,
+          }}
         />
       </svg>
-      <span className="absolute text-[0.78rem] font-bold" style={{ fontVariantNumeric: "tabular-nums" }}>
-        {Math.round(clamped)}%
+      <span className="absolute grid place-items-center text-center leading-none">
+        {children ?? (
+          <span className="numeric text-[0.78rem] font-bold">{Math.round(clamped)}%</span>
+        )}
       </span>
     </span>
   );
 }
 
-/** Section heading with personality: a warm title and a soft rule. */
+/** Section heading with personality: a tonal dot, a warm title, a soft rule. */
 export function BentoHeading({
   title,
   aside,
+  tone,
 }: {
   title: string;
   aside?: ReactNode;
+  tone?: Tone;
 }) {
   return (
-    <div className="mb-3 flex items-center gap-3 px-1">
-      <h2 className="title-md text-[1.05rem]">{title}</h2>
+    <div className="band-label mb-3" data-tone={tone}>
+      <span
+        className="size-2 flex-none rounded-full"
+        style={{ background: "var(--tone, var(--space-accent))" }}
+        aria-hidden
+      />
+      <h2 className="title-md text-[1.02rem]">{title}</h2>
       <span className="bg-border/70 h-px flex-1" />
       {aside}
     </div>
