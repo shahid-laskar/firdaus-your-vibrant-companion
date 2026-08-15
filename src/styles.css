@@ -776,8 +776,8 @@
     radial-gradient(130% 140% at 100% 0%, color-mix(in oklab, var(--tone) 26%, transparent) 0%, transparent 66%),
     linear-gradient(
       158deg,
-      color-mix(in oklab, var(--tone-soft) 82%, var(--card)) 0%,
-      color-mix(in oklab, var(--tone) 20%, var(--card)) 100%
+      color-mix(in oklab, var(--tone) 9%, var(--card)) 0%,
+      color-mix(in oklab, var(--tone) 24%, var(--card)) 100%
     );
   box-shadow:
     inset 0 0 0 1px color-mix(in oklab, var(--tone) 16%, transparent),
