@@ -1,0 +1,59 @@
+{
+  "name": "Sunnah Home",
+  "short_name": "Sunnah Home",
+  "description": "A calm, handcrafted daily companion for prayer, family, wellbeing, and budgeting.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fbf9f5",
+  "theme_color": "#467258",
+  "categories": [
+    "lifestyle",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Deen",
+      "url": "/deen",
+      "description": "Prayer times, Quran, and dhikr"
+    },
+    {
+      "name": "Budget",
+      "url": "/budget",
+      "description": "Family budget and spending"
+    },
+    {
+      "name": "Me",
+      "url": "/me",
+      "description": "Personal wellbeing and notes"
+    }
+  ]
+}

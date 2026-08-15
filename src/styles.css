@@ -1,31 +1,30 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./styles/themes.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * VEEDU DESIGN SYSTEM — "handcrafted daily companion"
+ * Philosophy: warm paper ground, ink typography, one quiet accent per space.
+ * Signature: "the thread" — a hairline vertical spine that carries the day.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 5px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+  --radius-3xl: calc(var(--radius) + 22px);
+  --radius-4xl: calc(var(--radius) + 32px);
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-cursive: "Great Vibes", cursive;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri Quran", "Scheherazade New", serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -46,90 +45,53 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
 
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  /* Sunnah Home palette */
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-leaf: var(--leaf);
+  --color-sandal: var(--sandal);
+  --color-brass: var(--brass);
+  --color-clay: var(--clay);
+  --color-teal: var(--teal);
+  --color-space: var(--space-accent);
+  --color-space-soft: var(--space-accent-soft);
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* category voices */
+  --color-cat-prayer: var(--cat-prayer);
+  --color-cat-prayer-soft: var(--cat-prayer-soft);
+  --color-cat-task: var(--cat-task);
+  --color-cat-task-soft: var(--cat-task-soft);
+  --color-cat-meal: var(--cat-meal);
+  --color-cat-meal-soft: var(--cat-meal-soft);
+  --color-cat-kids: var(--cat-kids);
+  --color-cat-kids-soft: var(--cat-kids-soft);
+  --color-cat-grocery: var(--cat-grocery);
+  --color-cat-grocery-soft: var(--cat-grocery-soft);
+  --color-cat-habit: var(--cat-habit);
+  --color-cat-habit-soft: var(--cat-habit-soft);
+  --color-cat-money: var(--cat-money);
+  --color-cat-money-soft: var(--cat-money-soft);
+  --color-cat-self: var(--cat-self);
+  --color-cat-self-soft: var(--cat-self-soft);
+
+  --color-chart-1: var(--leaf);
+  --color-chart-2: var(--brass);
+  --color-chart-3: var(--teal);
+  --color-chart-4: var(--clay);
+  --color-chart-5: var(--sandal);
+  --color-sidebar: var(--paper-raised);
+  --color-sidebar-foreground: var(--ink);
+  --color-sidebar-primary: var(--leaf);
+  --color-sidebar-primary-foreground: var(--paper);
+  --color-sidebar-accent: var(--sandal);
+  --color-sidebar-accent-foreground: var(--ink);
+  --color-sidebar-border: var(--rule);
+  --color-sidebar-ring: var(--ring);
 }
 
 @layer base {
@@ -137,8 +99,880 @@
     border-color: var(--color-border);
   }
 
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv05";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* paper grain — materiality without noise */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+  .dark body::before {
+    mix-blend-mode: screen;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--space-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--space-accent-soft);
   }
 }
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.95rem, 6.4vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.42rem, 4.2vw, 1.85rem);
+  line-height: 1.14;
+  letter-spacing: -0.028em;
+}
+
+@utility title-md {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@utility numeric {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.02em;
+}
+
+@utility arabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.15;
+  letter-spacing: 0;
+}
+
+/* the thread: Sunnah Home's signature spine */
+@utility thread {
+  position: relative;
+  padding-left: 1.65rem;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.3rem;
+    top: 0.15rem;
+    bottom: 0.15rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--rule) 8%,
+      var(--rule) 92%,
+      transparent
+    );
+  }
+}
+
+@utility thread-node {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.65rem;
+    top: 0.52rem;
+    width: 9px;
+    height: 9px;
+    margin-left: -0.15rem;
+    border-radius: 999px;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    transition: all 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  &[data-active="true"]::before {
+    background: var(--space-accent);
+    border-color: var(--space-accent);
+    box-shadow: 0 0 0 4px var(--space-accent-soft);
+  }
+  &[data-done="true"]::before {
+    background: var(--rule);
+    border-color: var(--rule);
+  }
+}
+
+@utility surface {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lift);
+}
+
+@utility press {
+  transition:
+    transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 160ms ease,
+    border-color 160ms ease;
+  &:active {
+    transform: scale(0.975);
+  }
+}
+
+@utility rule-line {
+  height: 1px;
+  background: var(--rule);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Phase 4 surfaces ─────────────────────────────────────────────────────
+   Primary context area shared by Ramadan Mode and Hifz. The seasonal tone
+   borrows the active space accent only — no separate colour system. */
+.context-hero {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-lift);
+}
+.context-hero[data-tone="seasonal"] {
+  background:
+    radial-gradient(
+      120% 90% at 88% -10%,
+      var(--space-accent-soft) 0%,
+      transparent 62%
+    ),
+    var(--card);
+  border-color: color-mix(in oklab, var(--space-accent) 22%, var(--rule));
+}
+
+/* Quiet status word. Emphasis comes from weight and ink, not alarm colour. */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  background: color-mix(in oklab, var(--rule) 45%, transparent);
+}
+.status-chip[data-tone="urgent"] {
+  color: var(--foreground);
+  background: var(--space-accent-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--space-accent) 40%, transparent);
+}
+.status-chip[data-tone="attention"] {
+  color: var(--foreground);
+  background: color-mix(in oklab, var(--space-accent-soft) 60%, transparent);
+}
+.status-chip[data-tone="settled"] {
+  color: var(--ink-faint);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+/* Daily surface thread: urgent items lean forward, ambient ones recede. */
+@utility thread-lead {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+
+/* Quran reader: comfortable measure and a restful ayah rhythm. */
+@utility reader-measure {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+@utility ayah-block {
+  padding-block: 1.15rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--rule) 55%, transparent);
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+@utility safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@keyframes veedu-thread-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Thread item entrance — staggered via --i, runs once, never loops. */
+@utility thread-in {
+  animation: veedu-thread-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+@keyframes veedu-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility rise {
+  animation: veedu-rise 460ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes veedu-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* progressive disclosure: detail unfolding under an insight */
+@utility reveal {
+  animation: veedu-reveal 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes veedu-pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@utility pulse-ring {
+  animation: veedu-pulse-ring 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes butterfly-fly {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    filter: brightness(1);
+  }
+  25% {
+    transform: translateY(-3px) rotate(3deg);
+    filter: brightness(1.15) drop-shadow(0 0 3px rgba(230, 180, 50, 0.5));
+  }
+  50% {
+    transform: translateY(-1px) rotate(0deg);
+    filter: brightness(1.3) drop-shadow(0 0 6px rgba(230, 180, 50, 0.8));
+  }
+  75% {
+    transform: translateY(2px) rotate(-3deg);
+    filter: brightness(1.15) drop-shadow(0 0 3px rgba(230, 180, 50, 0.5));
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+.animate-butterfly {
+  animation: butterfly-fly 3s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * DAWN BLOOM — bento surface language
+ * A tile is a tonal field, not a bordered box. Colour carries meaning:
+ * every tone maps to a life-area voice (--cat-*), never to decoration.
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+@utility tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.85rem;
+  background: var(--card);
+  padding: 1.15rem;
+  transition:
+    transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 220ms ease;
+  &:active {
+    transform: scale(0.985);
+  }
+}
+
+/* Tonal tile: soft field + matching ink, driven by data-tone */
+@utility tile-tone {
+  --tone: var(--space-accent);
+  --tone-soft: var(--space-accent-soft);
+  background: var(--tone-soft);
+  color: var(--foreground);
+  &[data-tone="prayer"] {
+    --tone: var(--cat-prayer);
+    --tone-soft: var(--cat-prayer-soft);
+  }
+  &[data-tone="task"] {
+    --tone: var(--cat-task);
+    --tone-soft: var(--cat-task-soft);
+  }
+  &[data-tone="meal"] {
+    --tone: var(--cat-meal);
+    --tone-soft: var(--cat-meal-soft);
+  }
+  &[data-tone="kids"] {
+    --tone: var(--cat-kids);
+    --tone-soft: var(--cat-kids-soft);
+  }
+  &[data-tone="grocery"] {
+    --tone: var(--cat-grocery);
+    --tone-soft: var(--cat-grocery-soft);
+  }
+  &[data-tone="habit"] {
+    --tone: var(--cat-habit);
+    --tone-soft: var(--cat-habit-soft);
+  }
+  &[data-tone="money"] {
+    --tone: var(--cat-money);
+    --tone-soft: var(--cat-money-soft);
+  }
+  &[data-tone="self"] {
+    --tone: var(--cat-self);
+    --tone-soft: var(--cat-self-soft);
+  }
+}
+
+/* The one dominant tile of the screen: warm dawn light. */
+@utility tile-hero {
+  color: oklch(0.995 0.008 70);
+  background:
+    radial-gradient(115% 130% at 12% -20%, oklch(0.86 0.13 78 / 0.95) 0%, transparent 58%),
+    linear-gradient(142deg, oklch(0.72 0.165 42) 0%, oklch(0.62 0.15 26) 62%, oklch(0.5 0.11 12) 100%);
+  box-shadow: 0 20px 42px -24px oklch(0.55 0.15 38 / 0.75);
+}
+
+/* soft light bloom used inside hero tiles */
+@utility bloom {
+  position: absolute;
+  border-radius: 999px;
+  background: oklch(1 0 0 / 0.16);
+  filter: blur(26px);
+  pointer-events: none;
+}
+
+/* icon container — the app's signature glyph holder */
+@utility icon-chip {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.95rem;
+  color: var(--tone, var(--space-accent));
+  background: color-mix(in oklab, var(--tone, var(--space-accent)) 16%, transparent);
+}
+
+@utility icon-chip-solid {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.95rem;
+  color: oklch(0.995 0.008 70);
+  background: var(--tone, var(--space-accent));
+  box-shadow: 0 6px 14px -8px color-mix(in oklab, var(--tone, var(--space-accent)) 90%, transparent);
+}
+
+/* a friendly, readable metric — warm, not spreadsheet */
+@utility figure-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  background: color-mix(in oklab, var(--tone, var(--space-accent)) 14%, transparent);
+  color: color-mix(in oklab, var(--tone, var(--space-accent)) 75%, var(--foreground));
+}
+
+/* bento entrance — gentle, staggered, once */
+@keyframes bloom-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility bloom-in {
+  animation: bloom-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 65ms);
+}
+
+/* one restrained celebration */
+@keyframes sparkle-pop {
+  0% {
+    transform: scale(0.6) rotate(-12deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.12) rotate(4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@utility sparkle {
+  animation: sparkle-pop 620ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+/* breathing dot for a live "right now" signal */
+@keyframes soft-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility breathe {
+  animation: soft-breathe 2.8s ease-in-out infinite;
+}
+
+/* progress arc track/fill pair, used by the ring component */
+@utility ring-track {
+  stroke: color-mix(in oklab, var(--tone, var(--space-accent)) 18%, transparent);
+}
+@utility ring-fill {
+  stroke: var(--tone, var(--space-accent));
+  transition: stroke-dashoffset 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * FIRDAUS PREMIUM — vibrant, expressive layer over Dawn Bloom.
+ * Rules: colour always carries meaning (life-area tone). Energy is spent
+ * where it matters (hero, now-items, completion), calm everywhere else.
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Motion ─────────────────────────────────────────────────────────────── */
+@keyframes firdaus-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, -8%, 0) scale(1.14);
+  }
+}
+
+@keyframes firdaus-sheen {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.55;
+  }
+  60%,
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes firdaus-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes firdaus-halo {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+@utility drift {
+  animation: firdaus-drift 16s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -4s);
+}
+
+@utility float-soft {
+  animation: firdaus-float 5.5s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -0.9s);
+}
+
+@utility halo-pulse {
+  animation: firdaus-halo 3.6s ease-in-out infinite;
+}
+
+/* ── Hero: the emotional centre ─────────────────────────────────────────── */
+@utility hero-aurora {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 2.35rem;
+  color: oklch(0.995 0.008 70);
+  background:
+    radial-gradient(120% 120% at 8% -20%, oklch(0.88 0.14 82 / 0.95) 0%, transparent 55%),
+    radial-gradient(95% 110% at 96% 8%, oklch(0.7 0.17 350 / 0.55) 0%, transparent 58%),
+    radial-gradient(110% 120% at 60% 130%, oklch(0.6 0.14 190 / 0.6) 0%, transparent 60%),
+    linear-gradient(148deg, oklch(0.7 0.17 40) 0%, oklch(0.55 0.16 18) 55%, oklch(0.4 0.11 300) 100%);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.28) inset,
+    0 30px 60px -34px oklch(0.45 0.15 30 / 0.85);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.28), transparent);
+    width: 42%;
+    animation: firdaus-sheen 7.5s cubic-bezier(0.3, 0.1, 0.2, 1) infinite;
+  }
+}
+
+/* soft light orbs floating inside the hero */
+@utility orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 0;
+  background: oklch(1 0 0 / 0.22);
+}
+
+/* subtle geometric motif — spiritual character without literal ornament */
+@utility motif {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.16;
+  background-image:
+    repeating-linear-gradient(45deg, oklch(1 0 0 / 0.9) 0 1px, transparent 1px 13px),
+    repeating-linear-gradient(-45deg, oklch(1 0 0 / 0.9) 0 1px, transparent 1px 13px);
+  mask-image: radial-gradient(circle at 70% 30%, black 0%, transparent 68%);
+}
+
+/* frosted control on the hero */
+@utility hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: inherit;
+  background: oklch(1 0 0 / 0.16);
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.22);
+  backdrop-filter: blur(8px);
+  transition: background-color 200ms ease, transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  &:hover {
+    background: oklch(1 0 0 / 0.26);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ── Tonal surfaces with real depth ─────────────────────────────────────── */
+.tile-vivid {
+  --tone: var(--space-accent);
+  --tone-soft: var(--space-accent-soft);
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(130% 140% at 100% 0%, color-mix(in oklab, var(--tone) 34%, transparent) 0%, transparent 70%),
+    linear-gradient(
+      158deg,
+      color-mix(in oklab, var(--tone) 15%, var(--card)) 0%,
+      color-mix(in oklab, var(--tone) 32%, var(--card)) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--tone) 16%, transparent),
+    0 14px 30px -22px color-mix(in oklab, var(--tone) 70%, transparent);
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 240ms ease;
+  &:hover {
+    box-shadow:
+      inset 0 0 0 1px color-mix(in oklab, var(--tone) 28%, transparent),
+      0 22px 42px -24px color-mix(in oklab, var(--tone) 78%, transparent);
+    transform: translateY(-2px);
+  }
+  &[data-tone="prayer"] { --tone: var(--cat-prayer); --tone-soft: var(--cat-prayer-soft); }
+  &[data-tone="task"] { --tone: var(--cat-task); --tone-soft: var(--cat-task-soft); }
+  &[data-tone="meal"] { --tone: var(--cat-meal); --tone-soft: var(--cat-meal-soft); }
+  &[data-tone="kids"] { --tone: var(--cat-kids); --tone-soft: var(--cat-kids-soft); }
+  &[data-tone="grocery"] { --tone: var(--cat-grocery); --tone-soft: var(--cat-grocery-soft); }
+  &[data-tone="habit"] { --tone: var(--cat-habit); --tone-soft: var(--cat-habit-soft); }
+  &[data-tone="money"] { --tone: var(--cat-money); --tone-soft: var(--cat-money-soft); }
+  &[data-tone="self"] { --tone: var(--cat-self); --tone-soft: var(--cat-self-soft); }
+}
+
+/* calm surface for secondary information — tonal, not bordered box */
+.tile-quiet {
+  background: color-mix(in oklab, var(--card) 88%, var(--space-accent-soft));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--rule) 70%, transparent);
+}
+
+/* gradient glyph holder with a soft coloured glow */
+@utility icon-orb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: none;
+  border-radius: 1rem;
+  color: oklch(0.995 0.008 70);
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--tone, var(--space-accent)) 78%, oklch(1 0 0)) 0%,
+    var(--tone, var(--space-accent)) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.4),
+    0 8px 18px -10px color-mix(in oklab, var(--tone, var(--space-accent)) 95%, transparent);
+}
+
+@utility icon-orb-soft {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: none;
+  border-radius: 1rem;
+  color: var(--tone, var(--space-accent));
+  background: color-mix(in oklab, var(--tone, var(--space-accent)) 15%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tone, var(--space-accent)) 22%, transparent);
+}
+
+/* expressive number */
+@utility figure-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.15rem;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, var(--tone, var(--space-accent)) 92%, oklch(1 0 0)) 0%,
+    color-mix(in oklab, var(--tone, var(--space-accent)) 70%, var(--foreground)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* editorial section label — a tonal dot, a title, a hairline */
+@utility band-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-inline: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
+/* prayer rhythm timeline */
+@utility rhythm-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  & .dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--cat-prayer) 18%, transparent);
+    box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--cat-prayer) 30%, transparent);
+    transition: all 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  &[data-state="done"] {
+    color: var(--cat-prayer);
+    & .dot {
+      background: var(--cat-prayer);
+      box-shadow: 0 4px 10px -4px color-mix(in oklab, var(--cat-prayer) 90%, transparent);
+    }
+  }
+  &[data-state="next"] {
+    color: var(--foreground);
+    & .dot {
+      background: var(--card);
+      box-shadow:
+        inset 0 0 0 2.5px var(--cat-prayer),
+        0 0 0 5px color-mix(in oklab, var(--cat-prayer) 16%, transparent);
+      animation: firdaus-halo 2.6s ease-in-out infinite;
+    }
+  }
+}
+
+/* celebratory ribbon for completed states */
+@utility celebrate-field {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  color: oklch(0.995 0.008 70);
+  background:
+    radial-gradient(100% 130% at 12% 0%, oklch(0.86 0.15 145 / 0.9) 0%, transparent 60%),
+    linear-gradient(140deg, oklch(0.66 0.14 158) 0%, oklch(0.55 0.11 196) 100%);
+  box-shadow: 0 24px 48px -30px oklch(0.5 0.12 170 / 0.9);
+}
+
+/* ayah / encouragement surface */
+@utility verse-field {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  background:
+    radial-gradient(110% 130% at 100% 0%, color-mix(in oklab, var(--cat-prayer) 22%, transparent) 0%, transparent 62%),
+    linear-gradient(150deg, color-mix(in oklab, var(--cat-prayer) 9%, var(--card)) 0%, var(--card) 100%);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--cat-prayer) 18%, transparent);
+}
+
+/* quick action pill */
+@utility action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem 0.55rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: color-mix(in oklab, var(--tone, var(--space-accent)) 72%, var(--foreground));
+  background: color-mix(in oklab, var(--tone, var(--space-accent)) 11%, var(--card));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tone, var(--space-accent)) 18%, transparent);
+  transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 200ms ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 0 0 1px color-mix(in oklab, var(--tone, var(--space-accent)) 34%, transparent),
+      0 12px 22px -14px color-mix(in oklab, var(--tone, var(--space-accent)) 90%, transparent);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* band label tone mapping — the dot speaks the band's voice */
+.band-label[data-tone="prayer"] { --tone: var(--cat-prayer); }
+.band-label[data-tone="task"] { --tone: var(--cat-task); }
+.band-label[data-tone="meal"] { --tone: var(--cat-meal); }
+.band-label[data-tone="kids"] { --tone: var(--cat-kids); }
+.band-label[data-tone="grocery"] { --tone: var(--cat-grocery); }
+.band-label[data-tone="habit"] { --tone: var(--cat-habit); }
+.band-label[data-tone="money"] { --tone: var(--cat-money); }
+.band-label[data-tone="self"] { --tone: var(--cat-self); }
+
+/* quick action pills carry their life-area voice */
+.action-pill[data-tone="prayer"] { --tone: var(--cat-prayer); }
+.action-pill[data-tone="task"] { --tone: var(--cat-task); }
+.action-pill[data-tone="meal"] { --tone: var(--cat-meal); }
+.action-pill[data-tone="kids"] { --tone: var(--cat-kids); }
+.action-pill[data-tone="grocery"] { --tone: var(--cat-grocery); }
+.action-pill[data-tone="habit"] { --tone: var(--cat-habit); }
+.action-pill[data-tone="money"] { --tone: var(--cat-money); }
+.action-pill[data-tone="self"] { --tone: var(--cat-self); }
