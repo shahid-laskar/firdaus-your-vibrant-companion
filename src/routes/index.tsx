@@ -249,6 +249,10 @@ function Today() {
                 {countdown.mins}m
               </Link>
             )}
+            <span className="hero-pill sm:hidden">
+              <Sun className="size-3.5" strokeWidth={2.4} aria-hidden />
+              {dayPct}% tended
+            </span>
             {hijri && (
               <span className="hero-pill">
                 <Moon className="size-3.5" strokeWidth={2.4} aria-hidden />
@@ -520,7 +524,7 @@ function QuickAction({
   label: string;
 }) {
   return (
-    <Link to={to} data-tone={tone} className="action-pill tile-vivid !bg-none">
+    <Link to={to} data-tone={tone} className="action-pill">
       <span className="icon-orb size-8 rounded-[0.7rem]">
         <Icon className="size-[0.95rem]" strokeWidth={2.2} />
       </span>

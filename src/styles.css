@@ -773,8 +773,12 @@
   position: relative;
   isolation: isolate;
   background:
-    radial-gradient(120% 130% at 100% 0%, color-mix(in oklab, var(--tone) 20%, transparent) 0%, transparent 62%),
-    linear-gradient(160deg, color-mix(in oklab, var(--tone) 12%, var(--card)) 0%, var(--tone-soft) 100%);
+    radial-gradient(130% 140% at 100% 0%, color-mix(in oklab, var(--tone) 26%, transparent) 0%, transparent 66%),
+    linear-gradient(
+      158deg,
+      color-mix(in oklab, var(--tone-soft) 82%, var(--card)) 0%,
+      color-mix(in oklab, var(--tone) 20%, var(--card)) 100%
+    );
   box-shadow:
     inset 0 0 0 1px color-mix(in oklab, var(--tone) 16%, transparent),
     0 14px 30px -22px color-mix(in oklab, var(--tone) 70%, transparent);
@@ -952,3 +956,23 @@
     transform: scale(0.97);
   }
 }
+
+/* band label tone mapping — the dot speaks the band's voice */
+.band-label[data-tone="prayer"] { --tone: var(--cat-prayer); }
+.band-label[data-tone="task"] { --tone: var(--cat-task); }
+.band-label[data-tone="meal"] { --tone: var(--cat-meal); }
+.band-label[data-tone="kids"] { --tone: var(--cat-kids); }
+.band-label[data-tone="grocery"] { --tone: var(--cat-grocery); }
+.band-label[data-tone="habit"] { --tone: var(--cat-habit); }
+.band-label[data-tone="money"] { --tone: var(--cat-money); }
+.band-label[data-tone="self"] { --tone: var(--cat-self); }
+
+/* quick action pills carry their life-area voice */
+.action-pill[data-tone="prayer"] { --tone: var(--cat-prayer); }
+.action-pill[data-tone="task"] { --tone: var(--cat-task); }
+.action-pill[data-tone="meal"] { --tone: var(--cat-meal); }
+.action-pill[data-tone="kids"] { --tone: var(--cat-kids); }
+.action-pill[data-tone="grocery"] { --tone: var(--cat-grocery); }
+.action-pill[data-tone="habit"] { --tone: var(--cat-habit); }
+.action-pill[data-tone="money"] { --tone: var(--cat-money); }
+.action-pill[data-tone="self"] { --tone: var(--cat-self); }
