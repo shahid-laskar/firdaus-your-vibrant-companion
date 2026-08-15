@@ -39,9 +39,9 @@ export function Tile({
   index?: number;
   children: ReactNode;
   /** plain = card surface instead of a tinted field */
-  plain?: boolean;
+  plain?: boolean | undefined;
   /** quiet = calm tonal surface for secondary information */
-  quiet?: boolean;
+  quiet?: boolean | undefined;
 }) {
   const surface = plain
     ? "border border-border/70 shadow-[var(--shadow-lift)]"
@@ -251,7 +251,7 @@ export function BentoHeading({
 }: {
   title: string;
   aside?: ReactNode;
-  tone?: Tone;
+  tone?: Tone | undefined;
 }) {
   return (
     <div className="band-label mb-3" data-tone={tone}>

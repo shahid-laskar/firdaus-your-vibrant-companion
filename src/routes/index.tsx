@@ -472,7 +472,7 @@ function PrayerRhythm({
 }: {
   prayers: { id: string; name: string; time: string }[];
   logged: Record<string, unknown>;
-  nextId?: string;
+  nextId?: string | undefined;
   prayed: number;
 }) {
   return (
