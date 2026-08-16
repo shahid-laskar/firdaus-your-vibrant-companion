@@ -214,7 +214,9 @@ function AuthPage() {
             Everything stays on this device. Nothing is sent anywhere until you decide.
           </span>
         </button>
+        </div>
       </div>
     </div>
+
   );
 }
