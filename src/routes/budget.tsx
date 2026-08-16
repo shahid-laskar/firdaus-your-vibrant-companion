@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo } from "react";
+import { CalendarDays, TrendingUp, Wallet } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
-import { Overview, QuickEntry, Zakat } from "@/components/budget/modules";
+import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";
+import { Overview, QuickEntry, Zakat, money, useExpenses, useLimits } from "@/components/budget/modules";
 import { History } from "@/components/budget/history";
 import { useTab } from "@/lib/use-tab";
+import { todayKey } from "@/lib/store";
+
 
 export const Route = createFileRoute("/budget")({
   head: () => ({
