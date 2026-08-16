@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Moon, Star, Sunrise } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
+import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";
 import {
   DailyVerse,
-  DeenHero,
   Duas,
   Fasting,
   Hifz,
@@ -12,9 +13,14 @@ import {
   Quran,
   Salah,
   Tasbih,
+  useNextPrayer,
+  useSalah,
 } from "@/components/deen/modules";
 import { RamadanModeView } from "@/components/deen/ramadan";
 import { useRamadanMode } from "@/lib/ramadan";
+import { hijriLabel } from "@/lib/hijri";
+import { todayKey, useNow, useStore } from "@/lib/store";
+
 
 export const Route = createFileRoute("/deen")({
   head: () => ({
