@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
+import { Sparkles, Wallet } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
+import { PageHero, HeroFigure } from "@/components/veedu/page-hero";
 import { money } from "@/components/budget/modules";
 import { useStore } from "@/lib/store";
+
 import { useInsights } from "@/components/insights/use-insights";
 import {
   DayStrip,
