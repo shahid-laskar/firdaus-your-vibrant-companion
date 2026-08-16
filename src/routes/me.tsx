@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Droplets, Flower2, ShieldCheck } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
+import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";
 import { Cycle, Habits, Health, Journal, SelfCare } from "@/components/me/modules";
 import { Trends } from "@/components/me/trends";
 import { useTab } from "@/lib/use-tab";
-import { useStore } from "@/lib/store";
+import { todayKey, useStore } from "@/lib/store";
+
 
 export const Route = createFileRoute("/me")({
   head: () => ({
