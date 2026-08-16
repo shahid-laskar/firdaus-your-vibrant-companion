@@ -270,12 +270,15 @@ function Today() {
       </header>
 
       {/* ── Salah rhythm: a timeline, not a widget ───────────────────────── */}
-      <PrayerRhythm
-        prayers={prayers}
-        logged={loggedSalah}
-        nextId={countdown?.next.id}
-        prayed={prayed}
-      />
+      {now && (
+        <PrayerRhythm
+          prayers={prayers}
+          logged={loggedSalah}
+          nextId={countdown?.next.id}
+          prayed={prayed}
+        />
+      )}
+
 
       {/* ── Quick actions: small, colourful, one tap away ─────────────────── */}
       <nav aria-label="Quick actions" className="-mx-5 no-scrollbar overflow-x-auto px-5">
