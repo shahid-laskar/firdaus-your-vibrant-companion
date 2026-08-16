@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Droplets, Flower2, ShieldCheck } from "lucide-react";
+import { Droplets, ShieldCheck } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
 import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";

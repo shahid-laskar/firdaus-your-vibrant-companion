@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { CalendarDays, TrendingUp, Wallet } from "lucide-react";
+import { CalendarDays, TrendingUp } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
 import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";
