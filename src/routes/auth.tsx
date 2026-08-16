@@ -65,14 +65,21 @@ function AuthPage() {
       data-space="home"
       className="relative z-[1] flex min-h-dvh flex-col justify-center px-6 py-16"
     >
-      <div className="mx-auto w-full max-w-sm">
-        <div className="mb-10 flex items-baseline gap-2">
-          <span className="font-display text-xl">Sunnah Home</span>
-          <span className="bg-space size-[5px] rounded-full" />
+      <div className="border-border/60 bg-card/70 shadow-elegant relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl border p-6 backdrop-blur-xl sm:p-8">
+        <span className="orb drift -top-16 -right-12 size-44" style={{ "--i": 0 } as never} aria-hidden />
+        <div className="relative z-[2]">
+        <div className="mb-10 flex items-center gap-3">
+          <img
+            src="/logo.gif"
+            alt="Sunnah Home"
+            className="animate-butterfly size-10 rounded-xl object-cover shadow-sm"
+          />
+          <span className="font-cursive text-3xl tracking-wide">Sunnah Home</span>
         </div>
 
         <h1 className="display-lg">{copy.title}</h1>
         <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{copy.body}</p>
+
 
         {account ? (
           <div className="mt-8">
@@ -207,7 +214,9 @@ function AuthPage() {
             Everything stays on this device. Nothing is sent anywhere until you decide.
           </span>
         </button>
+        </div>
       </div>
     </div>
+
   );
 }

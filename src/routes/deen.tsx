@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Moon, Star, Sunrise } from "lucide-react";
 import { Shell } from "@/components/veedu/shell";
 import { SubTabs } from "@/components/veedu/primitives";
+import { PageHero, HeroFigure, type HeroPill } from "@/components/veedu/page-hero";
 import {
   DailyVerse,
-  DeenHero,
   Duas,
   Fasting,
   Hifz,
@@ -12,9 +13,14 @@ import {
   Quran,
   Salah,
   Tasbih,
+  useNextPrayer,
+  useSalah,
 } from "@/components/deen/modules";
 import { RamadanModeView } from "@/components/deen/ramadan";
 import { useRamadanMode } from "@/lib/ramadan";
+import { hijriLabel } from "@/lib/hijri";
+import { todayKey, useNow, useStore } from "@/lib/store";
+
 
 export const Route = createFileRoute("/deen")({
   head: () => ({
@@ -51,6 +57,12 @@ const BASE_TABS = [
 function DeenPage() {
   const [tab, setTab] = useState("today");
   const { isActive, ramadanDay } = useRamadanMode();
+  const now = useNow(30_000);
+  const countdown = useNextPrayer();
+  const [salah] = useSalah();
+  const [profile] = useStore("profile", { name: "", city: "Kozhikode" });
+  const prayed = Object.keys(salah[todayKey()] ?? {}).length;
+  const hijri = now ? hijriLabel(now) : "";
 
   const tabs = BASE_TABS.map((t) =>
     t.id === "ramadan" && isActive
@@ -58,14 +70,48 @@ function DeenPage() {
       : t
   );
 
+  const pills: HeroPill[] = [];
+  if (countdown)
+    pills.push({
+      id: "next",
+      icon: Sunrise,
+      label: `${countdown.next.name} at ${countdown.next.time}`,
+    });
+  if (hijri) pills.push({ id: "hijri", icon: Moon, label: hijri });
+  if (isActive) pills.push({ id: "ramadan", icon: Star, label: `Ramadan ${ramadanDay ?? ""}` });
+
   return (
     <Shell space="deen">
+      <PageHero
+        variant="deen"
+        eyebrow={profile.city}
+        title={
+          countdown ? (
+            <>
+              {countdown.next.name} in{" "}
+              <span className="numeric">
+                {countdown.hours > 0 ? `${countdown.hours}h ` : ""}
+                {countdown.mins}m
+              </span>
+            </>
+          ) : (
+            "Peace be upon you"
+          )
+        }
+        subtitle={
+          prayed === 5
+            ? "All five kept today — a complete thread, alhamdulillah."
+            : `${prayed} of 5 prayers logged today. Small, steady deeds are the most beloved.`
+        }
+        pills={pills}
+        aside={<HeroFigure value={`${prayed}/5`} label="prayers" />}
+        arabic="ٱلسَّلَامُ عَلَيْكُمْ"
+      />
       <div className="mb-8">
         <SubTabs tabs={tabs} value={tab} onChange={setTab} />
       </div>
       {tab === "today" && (
         <div className="space-y-12">
-          <DeenHero />
           <Salah />
           <DailyVerse />
         </div>
@@ -80,3 +126,4 @@ function DeenPage() {
     </Shell>
   );
 }
+

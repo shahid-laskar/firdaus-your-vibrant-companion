@@ -976,3 +976,107 @@
 .action-pill[data-tone="habit"] { --tone: var(--cat-habit); }
 .action-pill[data-tone="money"] { --tone: var(--cat-money); }
 .action-pill[data-tone="self"] { --tone: var(--cat-self); }
+
+/* ── Per-space hero palettes ───────────────────────────────────────────── */
+.hero-aurora[data-hero="deen"] {
+  background:
+    radial-gradient(120% 120% at 10% -20%, oklch(0.8 0.13 200 / 0.85) 0%, transparent 55%),
+    radial-gradient(95% 110% at 95% 5%, oklch(0.72 0.15 165 / 0.5) 0%, transparent 58%),
+    radial-gradient(110% 120% at 55% 130%, oklch(0.55 0.15 265 / 0.65) 0%, transparent 62%),
+    linear-gradient(150deg, oklch(0.5 0.13 215) 0%, oklch(0.38 0.12 255) 55%, oklch(0.28 0.09 285) 100%);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.24) inset,
+    0 30px 60px -34px oklch(0.35 0.12 255 / 0.85);
+}
+
+.hero-aurora[data-hero="budget"] {
+  background:
+    radial-gradient(120% 120% at 8% -20%, oklch(0.88 0.15 120 / 0.75) 0%, transparent 55%),
+    radial-gradient(95% 110% at 96% 8%, oklch(0.85 0.15 85 / 0.55) 0%, transparent 58%),
+    radial-gradient(110% 120% at 60% 130%, oklch(0.6 0.13 175 / 0.6) 0%, transparent 60%),
+    linear-gradient(150deg, oklch(0.6 0.14 155) 0%, oklch(0.45 0.12 175) 55%, oklch(0.34 0.1 210) 100%);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.24) inset,
+    0 30px 60px -34px oklch(0.4 0.12 165 / 0.85);
+}
+
+.hero-aurora[data-hero="me"] {
+  background:
+    radial-gradient(120% 120% at 8% -20%, oklch(0.9 0.1 20 / 0.85) 0%, transparent 55%),
+    radial-gradient(95% 110% at 96% 8%, oklch(0.78 0.14 330 / 0.55) 0%, transparent 58%),
+    radial-gradient(110% 120% at 60% 130%, oklch(0.68 0.13 300 / 0.6) 0%, transparent 60%),
+    linear-gradient(150deg, oklch(0.72 0.14 15) 0%, oklch(0.58 0.15 345) 55%, oklch(0.42 0.13 300) 100%);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.26) inset,
+    0 30px 60px -34px oklch(0.45 0.14 340 / 0.85);
+}
+
+.hero-aurora[data-hero="review"] {
+  background:
+    radial-gradient(120% 120% at 8% -20%, oklch(0.9 0.14 95 / 0.85) 0%, transparent 55%),
+    radial-gradient(95% 110% at 96% 8%, oklch(0.75 0.14 240 / 0.5) 0%, transparent 58%),
+    radial-gradient(110% 120% at 60% 130%, oklch(0.65 0.14 30 / 0.55) 0%, transparent 60%),
+    linear-gradient(150deg, oklch(0.66 0.15 60) 0%, oklch(0.48 0.13 275) 60%, oklch(0.34 0.1 250) 100%);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.26) inset,
+    0 30px 60px -34px oklch(0.4 0.12 265 / 0.85);
+}
+
+/* copy on any aurora hero always reads on the gradient */
+.hero-aurora,
+.hero-aurora h1 {
+  color: oklch(0.99 0.01 90);
+}
+.hero-aurora .eyebrow {
+  color: oklch(1 0 0 / 0.78);
+}
+
+
+/* frosted figure on a hero */
+@utility hero-figure {
+  display: inline-block;
+  text-align: center;
+  border-radius: 1.35rem;
+  padding: 0.9rem 1.05rem;
+  background: oklch(1 0 0 / 0.15);
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.24);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Section navigation rail ───────────────────────────────────────────── */
+@utility tab-rail {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--space-accent) 7%, var(--card));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--space-accent) 14%, transparent);
+}
+
+@utility tab-pill {
+  position: relative;
+  flex: none;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.79rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  color: var(--ink-soft, var(--muted-foreground));
+  transition: color 180ms ease, transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  &:hover {
+    color: var(--foreground);
+  }
+  &:active {
+    transform: scale(0.96);
+  }
+  &[aria-selected="true"] {
+    color: oklch(0.995 0.008 70);
+    background: linear-gradient(
+      140deg,
+      color-mix(in oklab, var(--space-accent) 88%, white) 0%,
+      var(--space-accent) 100%
+    );
+    box-shadow: 0 10px 20px -14px color-mix(in oklab, var(--space-accent) 95%, transparent);
+  }
+}

@@ -43,8 +43,8 @@ export function SubTabs({
   onChange: (id: string) => void;
 }) {
   return (
-    <div className="-mx-5 px-5">
-      <div role="tablist" aria-label="Sections" className="flex flex-wrap gap-1.5 pb-px">
+    <div className="-mx-5 no-scrollbar overflow-x-auto px-5">
+      <div role="tablist" aria-label="Sections" className="tab-rail w-max">
         {tabs.map((t) => {
           const active = t.id === value;
           return (
@@ -53,11 +53,7 @@ export function SubTabs({
               role="tab"
               aria-selected={active}
               onClick={() => onChange(t.id)}
-              className={`press relative shrink-0 rounded-full px-3.5 py-2 text-[0.8rem] font-bold whitespace-nowrap transition-all ${
-                active
-                  ? "bg-space text-background shadow-[var(--shadow-lift)]"
-                  : "bg-space-soft/50 text-muted-foreground hover:text-foreground"
-              }`}
+              className="press tab-pill"
             >
               {t.label}
             </button>
@@ -67,6 +63,7 @@ export function SubTabs({
     </div>
   );
 }
+
 
 export function EmptyState({
   headline,
