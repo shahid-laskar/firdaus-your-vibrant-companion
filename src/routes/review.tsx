@@ -83,15 +83,23 @@ function InsightsPage() {
 
   return (
     <Shell space="home">
-      <header className="rise mb-10">
-        <p className="eyebrow">
-          {week[0]} → {week[6]}
-        </p>
-        <h1 className="display-xl mt-3">What your week is telling you</h1>
-        <p className="text-muted-foreground mt-3 max-w-prose text-sm leading-relaxed">
-          {openingLine}
-        </p>
-      </header>
+      <PageHero
+        variant="review"
+        eyebrow={`${week[0]} → ${week[6]}`}
+        title="What your week is telling you"
+        subtitle={openingLine}
+        pills={[
+          { id: "salah", icon: Sparkles, label: `${salah.comparison.current.totalLogged}/35 prayers` },
+          { id: "spend", icon: Wallet, label: `₹${money(budget.analytics.currentMonthTotal)} this month` },
+        ]}
+        aside={
+          <HeroFigure
+            value={`${Math.round(salah.comparison.current.onTimePercentage)}%`}
+            label="on time"
+          />
+        }
+      />
+
 
       <div className="space-y-12">
         {headline.length > 0 && (
