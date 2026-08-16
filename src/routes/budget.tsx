@@ -40,11 +40,48 @@ const TABS = [
 
 function BudgetPage() {
   const [tab, setTab] = useTab("overview");
+  const [expenses] = useExpenses();
+  const [limits] = useLimits();
+
+  const { total, today, cap } = useMemo(() => {
+    const m = todayKey().slice(0, 7);
+    const d = todayKey();
+    const thisMonth = expenses.filter((e) => e.date.startsWith(m));
+    return {
+      total: thisMonth.reduce((s, e) => s + e.amount, 0),
+      today: expenses.filter((e) => e.date === d).reduce((s, e) => s + e.amount, 0),
+      cap: Object.values(limits).reduce((s, n) => s + n, 0),
+    };
+  }, [expenses, limits]);
+
+  const pills: HeroPill[] = [
+    { id: "today", icon: CalendarDays, label: `₹${money(today)} today` },
+  ];
+  if (cap > 0)
+    pills.push({
+      id: "cap",
+      icon: TrendingUp,
+      label: `₹${money(Math.max(0, cap - total))} left of ₹${money(cap)}`,
+    });
+
   return (
     <Shell space="budget">
+      <PageHero
+        variant="budget"
+        eyebrow="This month"
+        title={<span className="numeric">₹{money(total)}</span>}
+        subtitle={
+          total === 0
+            ? "Nothing recorded yet this month. Add an expense and the picture starts forming."
+            : "Every rupee accounted for, calmly. No spreadsheets, no guilt."
+        }
+        pills={pills}
+        aside={<HeroFigure value={`${expenses.length}`} label="entries" />}
+      />
       <div className="mb-8">
         <SubTabs tabs={TABS} value={tab} onChange={setTab} />
       </div>
+
       {tab === "overview" && <Overview />}
       {tab === "entry" && <QuickEntry />}
       {tab === "history" && <History />}
