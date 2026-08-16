@@ -1022,6 +1022,16 @@
     0 30px 60px -34px oklch(0.4 0.12 265 / 0.85);
 }
 
+/* copy on any aurora hero always reads on the gradient */
+.hero-aurora,
+.hero-aurora h1 {
+  color: oklch(0.99 0.01 90);
+}
+.hero-aurora .eyebrow {
+  color: oklch(1 0 0 / 0.78);
+}
+
+
 /* frosted figure on a hero */
 @utility hero-figure {
   display: inline-block;
